@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="buscapreco.com.buscapreco_android.MainActivity"
-    android:background="@color/accent_material_light">
+    android:background="@color/switch_thumb_normal_material_light">
 
     <EditText
         android:layout_width="match_parent"
@@ -34,4 +34,21 @@
         android:background="@drawable/ic_barcode_grey600_18dp"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destaques"
+        android:id="@+id/titulo"
+        android:layout_below="@+id/codigoBarras"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/titulo"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
