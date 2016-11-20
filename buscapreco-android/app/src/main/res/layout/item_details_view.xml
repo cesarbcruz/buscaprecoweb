@@ -23,10 +23,17 @@
 		android:layout_below="@id/name"
 		android:layout_toRightOf="@id/photo" />
 
-	<TextView android:id="@+id/qtdelojas"
+    <TextView android:id="@+id/qtdelojas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemDescription"
+        android:layout_toRightOf="@id/photo" />
+
+	<TextView android:id="@+id/menorpreco"
+        android:text="preço:"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/itemDescription"
+		android:layout_below="@id/qtdelojas"
         android:layout_alignParentBottom="true"
 		android:layout_toRightOf="@id/photo" />
 

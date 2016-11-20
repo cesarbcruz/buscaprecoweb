@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         ItemDetails item_details = new ItemDetails();
         item_details.setName("Pizza");
         item_details.setItemDescription("Você já se perguntou o que é, de fato, um texto? Geralmente, entendemos o texto como um conjunto de frases, ou seja, algo que foi feito para ser lido. Mas a definição de texto não é tão simples quanto parece.");
-        item_details.setPreco(310.00);
+        item_details.setPreco(3101.00);
         item_details.setImageNumber(1);
         item_details.setQtdelojas(3);
         results.add(item_details);
