@@ -41,46 +41,50 @@ public class MainActivity extends AppCompatActivity {
 
         ItemDetails item_details = new ItemDetails();
         item_details.setName("Pizza");
-        item_details.setItemDescription("Spicy Chiken Pizza");
-        item_details.setPrice("RS 310.00");
+        item_details.setItemDescription("Você já se perguntou o que é, de fato, um texto? Geralmente, entendemos o texto como um conjunto de frases, ou seja, algo que foi feito para ser lido. Mas a definição de texto não é tão simples quanto parece.");
+        item_details.setPreco(310.00);
         item_details.setImageNumber(1);
+        item_details.setQtdelojas(3);
         results.add(item_details);
 
         item_details = new ItemDetails();
         item_details.setName("Burger");
         item_details.setItemDescription("Beef Burger");
-        item_details.setPrice("RS 350.00");
+        item_details.setPreco(0.80);
         item_details.setImageNumber(2);
+        item_details.setQtdelojas(1);
         results.add(item_details);
 
         item_details = new ItemDetails();
-        item_details.setName("Pizza");
-        item_details.setItemDescription("Chiken Pizza");
-        item_details.setPrice("RS 250.00");
+        item_details.setName("O contexto pode ser explícito, quando é expresso por palavras");
+        item_details.setItemDescription("Agora, vamos imaginar outra situação: você está no meio de uma floresta e ouve alguém gritar: “Madeira!”");
+        item_details.setPreco(250.00);
         item_details.setImageNumber(3);
+        item_details.setQtdelojas(10);
         results.add(item_details);
 
         item_details = new ItemDetails();
         item_details.setName("Burger");
         item_details.setItemDescription("Chicken Burger");
-        item_details.setPrice("RS 350.00");
+        item_details.setPreco(350.78);
         item_details.setImageNumber(4);
+        item_details.setQtdelojas(2);
         results.add(item_details);
 
         item_details = new ItemDetails();
         item_details.setName("Burger");
         item_details.setItemDescription("Fish Burger");
-        item_details.setPrice("RS 310.00");
+        item_details.setPreco(310.05);
         item_details.setImageNumber(5);
+        item_details.setQtdelojas(1);
         results.add(item_details);
 
         item_details = new ItemDetails();
         item_details.setName("Mango");
         item_details.setItemDescription("Mango Juice");
-        item_details.setPrice("RS 250.00");
+        item_details.setPreco(250.10);
         item_details.setImageNumber(6);
         results.add(item_details);
-
 
         return results;
     }

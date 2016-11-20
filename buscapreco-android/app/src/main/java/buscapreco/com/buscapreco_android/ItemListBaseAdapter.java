@@ -3,6 +3,7 @@ package buscapreco.com.buscapreco_android;
 /**
  * Created by cesar on 20/11/16.
  */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,19 +12,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class ItemListBaseAdapter extends BaseAdapter {
     private static ArrayList<ItemDetails> itemDetailsrrayList;
-
-    private Integer[] imgid = {
-            R.drawable.barcode,
-            R.drawable.barcode,
-            R.drawable.barcode,
-            R.drawable.barcode,
-            R.drawable.barcode,
-            R.drawable.barcode
-    };
 
     private LayoutInflater l_Inflater;
 
@@ -52,17 +45,24 @@ public class ItemListBaseAdapter extends BaseAdapter {
             holder.txt_itemName = (TextView) convertView.findViewById(R.id.name);
             holder.txt_itemDescription = (TextView) convertView.findViewById(R.id.itemDescription);
             holder.txt_itemPrice = (TextView) convertView.findViewById(R.id.price);
+            holder.txt_qtdelojas = (TextView) convertView.findViewById(R.id.qtdelojas);
             holder.itemImage = (ImageView) convertView.findViewById(R.id.photo);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        NumberFormat format = NumberFormat.getCurrencyInstance();
 
         holder.txt_itemName.setText(itemDetailsrrayList.get(position).getName());
         holder.txt_itemDescription.setText(itemDetailsrrayList.get(position).getItemDescription());
-        holder.txt_itemPrice.setText(itemDetailsrrayList.get(position).getPrice());
-        holder.itemImage.setImageResource(imgid[itemDetailsrrayList.get(position).getImageNumber() - 1]);
+        holder.txt_itemPrice.setText(format.format(itemDetailsrrayList.get(position).getPreco()));
+        String loja = " loja";
+        if(itemDetailsrrayList.get(position).getQtdelojas()>1){
+            loja+="s";
+        }
+        holder.txt_qtdelojas.setText(itemDetailsrrayList.get(position).getQtdelojas()+ loja);
+        holder.itemImage.setImageResource(R.drawable.semimagem);
 
         return convertView;
     }
@@ -71,6 +71,7 @@ public class ItemListBaseAdapter extends BaseAdapter {
         TextView txt_itemName;
         TextView txt_itemDescription;
         TextView txt_itemPrice;
+        TextView txt_qtdelojas;
         ImageView itemImage;
     }
 }
