@@ -5,6 +5,9 @@ package buscapreco.com.buscapreco_android;
  */
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +19,11 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class ItemListBaseAdapter extends BaseAdapter {
-    private static ArrayList<ItemDetails> itemDetailsrrayList;
+    private static ArrayList<Produto> itemDetailsrrayList;
 
     private LayoutInflater l_Inflater;
 
-    public ItemListBaseAdapter(Context context, ArrayList<ItemDetails> results) {
+    public ItemListBaseAdapter(Context context, ArrayList<Produto> results) {
         itemDetailsrrayList = results;
         l_Inflater = LayoutInflater.from(context);
     }
@@ -62,7 +65,14 @@ public class ItemListBaseAdapter extends BaseAdapter {
             loja+="s";
         }
         holder.txt_qtdelojas.setText(itemDetailsrrayList.get(position).getQtdelojas()+ loja);
-        holder.itemImage.setImageResource(R.drawable.semimagem);
+        if(itemDetailsrrayList.get(position).getImagem()==null||itemDetailsrrayList.get(position).getImagem().isEmpty()){
+            holder.itemImage.setImageResource(R.drawable.semimagem);
+        }else{
+            byte[] imageAsBytes = Base64.decode(itemDetailsrrayList.get(position).getImagem().getBytes(), Base64.DEFAULT);
+            holder.itemImage.setImageBitmap(
+                    Bitmap.createScaledBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length), 400, 400, true)
+            );
+        }
 
         return convertView;
     }
