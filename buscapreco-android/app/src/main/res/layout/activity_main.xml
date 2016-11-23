@@ -38,7 +38,7 @@
 
     <ImageButton
         android:layout_width="100px"
-        android:layout_height="80px"
+        android:layout_height="150px"
         android:id="@+id/lerCodigoBrras"
         android:layout_alignBottom="@+id/codigoBarras"
         android:background="@drawable/ic_barcode_grey600_18dp"
