@@ -17,6 +17,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
         l1.setEndereco(endereco);
         l1.setPreco(4.78);
         l1.setDescricao("Boteco da Maria");
+
+        Loja l2 = new Loja();
+        l2.setEndereco(endereco);
+        l2.setPreco(5.00);
+        l2.setDescricao("Pague Menos");
+
+        item_details.setLojas(Arrays.asList(l1,l2));
 
         results.add(item_details);
 

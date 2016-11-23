@@ -17,6 +17,7 @@
         android:completionThreshold="1"
         android:singleLine="true"
         android:layout_alignParentTop="true"
+        android:hint="Filtrar Cidade"
         android:completionHint="Selecione sua cidade"
     />
 
@@ -37,7 +38,7 @@
 
     <ImageButton
         android:layout_width="100px"
-        android:layout_height="60px"
+        android:layout_height="80px"
         android:id="@+id/lerCodigoBrras"
         android:layout_alignBottom="@+id/codigoBarras"
         android:background="@drawable/ic_barcode_grey600_18dp"
