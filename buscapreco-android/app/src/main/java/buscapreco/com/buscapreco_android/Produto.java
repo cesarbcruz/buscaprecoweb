@@ -3,16 +3,19 @@ package buscapreco.com.buscapreco_android;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by cesar on 20/11/16.
  */
-public class Produto implements Parcelable {
+public class Produto implements Parcelable{
 
 
-    private String name;
-    private String itemDescription;
-    private double preco;
-    private int qtdelojas;
+    private String descricao;
+    private String detalhes;
+    private List<Loja> lojas = new ArrayList<Loja>();
     private String imagem;
 
     public Produto(){
@@ -20,19 +23,15 @@ public class Produto implements Parcelable {
     }
 
     protected Produto(Parcel in) {
-        name = in.readString();
-        itemDescription = in.readString();
-        preco = in.readDouble();
-        qtdelojas = in.readInt();
+        descricao = in.readString();
+        detalhes = in.readString();
         imagem = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(itemDescription);
-        dest.writeDouble(preco);
-        dest.writeInt(qtdelojas);
+        dest.writeString(descricao);
+        dest.writeString(detalhes);
         dest.writeString(imagem);
     }
 
@@ -53,30 +52,28 @@ public class Produto implements Parcelable {
         }
     };
 
-    public int getQtdelojas() { return qtdelojas;}
-
-    public void setQtdelojas(int qtdelojas) {this.qtdelojas = qtdelojas;}
-
-    public String getName() {
-        return name;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getItemDescription() {
-        return itemDescription;
+    public String getDetalhes() {
+        return detalhes;
     }
 
-    public void setItemDescription(String itemDescription) {this.itemDescription = itemDescription;}
-
-    public double getPreco() {
-        return preco;
+    public void setDetalhes(String detalhes) {
+        this.detalhes = detalhes;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public List<Loja> getLojas() {
+        return lojas;
+    }
+
+    public void setLojas(List<Loja> lojas) {
+        this.lojas = lojas;
     }
 
     public String getImagem() {
@@ -85,6 +82,14 @@ public class Produto implements Parcelable {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public double getMenorPreco() {
+        if(lojas==null || lojas.isEmpty()){
+            return 0D;
+        }
+        Collections.sort(lojas);
+        return lojas.get(0).getPreco();
     }
 
 }

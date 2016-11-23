@@ -10,16 +10,26 @@
     tools:context="buscapreco.com.buscapreco_android.MainActivity"
     android:background="@color/switch_thumb_normal_material_light">
 
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cidade"
+        android:completionThreshold="1"
+        android:singleLine="true"
+        android:layout_alignParentTop="true"
+        android:completionHint="Selecione sua cidade"
+    />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:hint="Produto, marca, código."
         android:id="@+id/codigoBarras"
+        android:layout_below="@+id/cidade"
         android:singleLine="true"
         android:imeOptions="actionSearch"
         android:background="@drawable/edit_text_bottom_border"
-        android:layout_alignParentTop="true"
         android:paddingLeft="5dp"
         android:paddingRight="30dp"
         android:drawablePadding="10dp"
@@ -27,9 +37,8 @@
 
     <ImageButton
         android:layout_width="100px"
-        android:layout_height="wrap_content"
+        android:layout_height="60px"
         android:id="@+id/lerCodigoBrras"
-        android:layout_alignParentTop="true"
         android:layout_alignBottom="@+id/codigoBarras"
         android:background="@drawable/ic_barcode_grey600_18dp"
         android:layout_alignParentEnd="true"

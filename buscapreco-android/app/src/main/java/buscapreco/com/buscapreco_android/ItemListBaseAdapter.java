@@ -57,14 +57,18 @@ public class ItemListBaseAdapter extends BaseAdapter {
         }
         NumberFormat format = NumberFormat.getCurrencyInstance();
 
-        holder.txt_itemName.setText(itemDetailsrrayList.get(position).getName());
-        holder.txt_itemDescription.setText(itemDetailsrrayList.get(position).getItemDescription());
-        holder.txt_itemPrice.setText(format.format(itemDetailsrrayList.get(position).getPreco()));
-        String loja = " loja";
-        if(itemDetailsrrayList.get(position).getQtdelojas()>1){
-            loja+="s";
+        holder.txt_itemName.setText(itemDetailsrrayList.get(position).getDescricao());
+        holder.txt_itemDescription.setText(itemDetailsrrayList.get(position).getDetalhes());
+        holder.txt_itemPrice.setText(format.format(itemDetailsrrayList.get(position).getMenorPreco()));
+        if(itemDetailsrrayList.get(position).getLojas().isEmpty()) {
+            holder.txt_qtdelojas.setText("indisponível");
+        }else{
+            String loja = " loja";
+            if (itemDetailsrrayList.get(position).getLojas().size() > 1) {
+                loja += "s";
+            }
+            holder.txt_qtdelojas.setText(itemDetailsrrayList.get(position).getLojas().size() + loja);
         }
-        holder.txt_qtdelojas.setText(itemDetailsrrayList.get(position).getQtdelojas()+ loja);
         if(itemDetailsrrayList.get(position).getImagem()==null||itemDetailsrrayList.get(position).getImagem().isEmpty()){
             holder.itemImage.setImageResource(R.drawable.semimagem);
         }else{

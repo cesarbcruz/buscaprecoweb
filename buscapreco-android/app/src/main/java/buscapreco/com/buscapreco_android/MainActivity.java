@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,56 +48,32 @@ public class MainActivity extends AppCompatActivity {
                 lerCodigoBarras();
             }
         });
+
+
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, obterCidades());
+        AutoCompleteTextView clubes = (AutoCompleteTextView) findViewById(R.id.cidade);
+        clubes.setAdapter(adp);
     }
 
     private ArrayList<Produto> GetSearchResults() {
         ArrayList<Produto> results = new ArrayList<Produto>();
 
         Produto item_details = new Produto();
-        item_details.setName("Pizza");
-        item_details.setItemDescription("Você já se perguntou o que é, de fato, um texto? Geralmente, entendemos o texto como um conjunto de frases, ou seja, algo que foi feito para ser lido. Mas a definição de texto não é tão simples quanto parece.");
-        item_details.setPreco(3101.00);
-        //item_details.setImagem(1);
-        item_details.setQtdelojas(3);
-        results.add(item_details);
+        item_details.setDescricao("Cerveja Skol");
+        item_details.setDetalhes("300 ml");
 
-        item_details = new Produto();
-        item_details.setName("Burger");
-        item_details.setItemDescription("Beef Burger");
-        item_details.setPreco(0.80);
-        //item_details.setImagem(2);
-        item_details.setQtdelojas(1);
-        results.add(item_details);
+        Endereco endereco = new Endereco();
+        endereco.setCidade("Araras");
+        endereco.setLogradouro("Rua Paraná");
+        endereco.setBairro("Pq Industrial");
+        endereco.setUF("SP");
+        endereco.setNumero("350");
 
-        item_details = new Produto();
-        item_details.setName("O contexto pode ser explícito, quando é expresso por palavras");
-        item_details.setItemDescription("Agora, vamos imaginar outra situação: você está no meio de uma floresta e ouve alguém gritar: “Madeira!”");
-        item_details.setPreco(250.00);
-        //item_details.setImagem(3);
-        item_details.setQtdelojas(10);
-        results.add(item_details);
+        Loja l1 = new Loja();
+        l1.setEndereco(endereco);
+        l1.setPreco(4.78);
+        l1.setDescricao("Boteco da Maria");
 
-        item_details = new Produto();
-        item_details.setName("Burger");
-        item_details.setItemDescription("Chicken Burger");
-        item_details.setPreco(350.78);
-        //item_details.setImagem(4);
-        item_details.setQtdelojas(2);
-        results.add(item_details);
-
-        item_details = new Produto();
-        item_details.setName("Burger");
-        item_details.setItemDescription("Fish Burger");
-        item_details.setPreco(310.05);
-        //item_details.setImagem(5);
-        item_details.setQtdelojas(1);
-        results.add(item_details);
-
-        item_details = new Produto();
-        item_details.setName("Mango");
-        item_details.setItemDescription("Mango Juice");
-        item_details.setPreco(250.10);
-        //item_details.setImagem(6);
         results.add(item_details);
 
         return results;
@@ -164,6 +142,11 @@ public class MainActivity extends AppCompatActivity {
         savedState.putParcelableArrayList("produtos", produtos);
     }
 
+    private String [] obterCidades(){
+        String[] cidades = new String[]{"Araras-SP", "Limeira-SP", "Campinas-SP"};
+        return cidades;
+    }
+
     private void configurarEnventoLista(){
         lista = (ListView) findViewById(R.id.listView);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -171,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                 Object o = lista.getItemAtPosition(position);
                 Produto obj_produto = (Produto) o;
-                Toast.makeText(MainActivity.this, "Produto selecionado: " + " " + obj_produto.getName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Produto selecionado: " + " " + obj_produto.getDescricao(), Toast.LENGTH_LONG).show();
             }
         });
     }
